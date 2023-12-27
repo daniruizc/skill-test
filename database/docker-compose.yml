@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0.35
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    build: .
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'mgldefi'
+      # So you don't have to use root, but you can if you like
+      MYSQL_USER: 'mgluser'
+      # You can use whatever password you like
+      MYSQL_PASSWORD: 'mglFuture7@$'
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: '!MGL_r00t_us3r*'
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3306:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3306'
+      # Where our data will be persisted
+    volumes:
+      - my-db:/var/lib/mysql
+      # Import the SQL dump
+      - "../backend/src/db/new_mgldefi.sql:/docker-entrypoint-initdb.d/1.sql:ro"
+# Names our volume
+volumes:
+  my-db:

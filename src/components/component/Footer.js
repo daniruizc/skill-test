@@ -7,10 +7,6 @@ function Footer() {
              <img src="/assets/img/mark2.png"className="w-8 inline mx-4" />
              <a className="mt-2">Copyright © 2021 All rights reserved.</a>
           </div>
-          <div className="md:flex hidden ">
-            <LangSelect className="mr-3 myButton  bg-blue-100 w-20 text-sm" />
-            <button className=" myButton  bg-blue-100 w-20 text-sm"> USD </button>
-          </div>
       </div>
   );
 }
